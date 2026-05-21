@@ -289,7 +289,7 @@ else:
                                 st.session_state.generated_text = res["content"]
                                 st.rerun()
                             else:
-                                st.error("حدث خطأ أثناء الاتصال بالذكاء الاصطناعي.")
+                                st.error(f"تفاصيل الخطأ: {res['error']}")
                     else:
                         st.warning("رجاءً اكتب فكرة البوست أولاً!")
                 st.markdown("</div>", unsafe_allow_html=True)
