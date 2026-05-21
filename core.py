@@ -9,7 +9,7 @@ import streamlit as st
 # استدعاء المفاتيح بأمان من سيرفر ستريمليت
 GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
 LINKEDIN_ACCESS_TOKEN = st.secrets["LINKEDIN_ACCESS_TOKEN"]
-LINKEDIN_AUTHOR_URN = st.secrets["LINKEDIN_AUTHOR_URN"]تم إضافته بنجاح
+LINKEDIN_AUTHOR_URN = st.secrets["LINKEDIN_AUTHOR_URN"]
 # ============================================
 
 genai.configure(api_key=GEMINI_API_KEY)
