@@ -27,7 +27,7 @@ def save_posts(posts):
 
 def generate_ai_post(topic, tone="Professional"):
     # بنستخدم أحدث موديل من جوجل
-    model = genai.GenerativeModel('gemini-1.5-flash') 
+    model = genai.GenerativeModel('gemini-flash-latest') 
     prompt = f"اكتب بوست احترافي ومميز على لينكد إن باللغة العربية عن: {topic}. نبرة الصوت: {tone}. استخدم إيموجيز مناسبة ونسق الكلام بفقرات قصيرة."
     
     try:
