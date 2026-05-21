@@ -10,7 +10,7 @@ st.set_page_config(page_title="Nexus AI - RGB Workspace", page_icon="✨", layou
 if 'app_unlocked' not in st.session_state:
     st.session_state.app_unlocked = False
 
-# ==================== 3. كود الـ CSS (نظام الـ RGB الشامل والتطوير الجديد) ====================
+# ==================== 3. كود الـ CSS (نظام الـ RGB الشامل) ====================
 st.markdown("""
     <style>
     :root { color-scheme: dark; }
@@ -20,7 +20,7 @@ st.markdown("""
     header[data-testid="stHeader"] { display: none !important; }
     
     html, body, [data-testid="stAppViewContainer"] {
-        background-color: #020203; /* أسود أعمق لزيادة تباين الـ RGB */
+        background-color: #020203; 
         font-family: 'Inter', 'Tajawal', sans-serif;
         color: #F4F4F5;
     }
@@ -119,7 +119,7 @@ st.markdown("""
     }
     div.stButton > button[kind="primary"]:hover { filter: brightness(1.2); box-shadow: 0 8px 35px rgba(255, 0, 200, 0.5) !important; transform: translateY(-2px); }
 
-    /* ================= زرار الرجوع للشاشة الأساسية (Lock Button) ================= */
+    /* ================= زرار الرجوع للشاشة الأساسية ================= */
     .lock-btn-container > div > button {
         background: rgba(255, 0, 0, 0.05) !important;
         border: 1px solid rgba(255, 0, 0, 0.2) !important;
@@ -138,7 +138,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ==================== 4. إدارة البيانات (الكود الحساس - بدون أي تغيير) ====================
+# ==================== 4. إدارة البيانات (بدون أي تغيير) ====================
 posts = load_posts()
 
 total_generated = len(posts)
@@ -223,15 +223,14 @@ else:
             label_visibility="collapsed"
         )
         
-        # ====== زرار الرجوع للشاشة الأساسية (الجديد) ======
+        # ====== زرار الرجوع للشاشة الأساسية ======
         st.markdown("<div class='lock-btn-container'>", unsafe_allow_html=True)
-        if st.button("🔒 قفل النظام (العودة للرئيسية)", use_container_width=True):
+        if st.button("🔒 قفل النظام", use_container_width=True):
             st.session_state.app_unlocked = False
             st.rerun()
         st.markdown("</div>", unsafe_allow_html=True)
 
     with col_main:
-        # -------------------- DASHBOARD --------------------
         if selected_page == "📊 Dashboard":
             st.markdown("<h2 class='rgb-text' style='margin-bottom:5px; font-weight:800; letter-spacing:-1px;'>System Overview</h2>", unsafe_allow_html=True)
             st.markdown("<div style='color: #00ffd5; font-size: 11px; font-weight: 800; margin-bottom: 30px; letter-spacing: 2px;'>● CORE ENGINE ONLINE</div>", unsafe_allow_html=True)
@@ -267,7 +266,6 @@ else:
                 preview_text = pending_posts[0]['content'] if pending_posts else default_post
                 draw_linkedin_preview(preview_text)
 
-        # -------------------- GENERATOR --------------------
         elif selected_page == "✨ Generator":
             st.markdown("<h2 class='rgb-text' style='margin-bottom:5px; font-weight:800; letter-spacing:-1px;'>Post Generator</h2>", unsafe_allow_html=True)
             st.markdown("<div style='color: #A1A1AA; font-size: 14px; margin-bottom: 30px; font-weight:600;'>Craft high-impact LinkedIn content with AI.</div>", unsafe_allow_html=True)
@@ -311,7 +309,6 @@ else:
                     else:
                         st.warning("قم بتوليد بوست أولاً لنشره!")
 
-        # -------------------- QUEUE --------------------
         elif selected_page == "📋 Queue":
             st.markdown("<h2 class='rgb-text' style='margin-bottom:5px; font-weight:800; letter-spacing:-1px;'>Publishing Queue</h2>", unsafe_allow_html=True)
             st.markdown("<div style='color: #00ffd5; font-size: 13px; margin-bottom: 30px; font-weight:600;'>Review, edit, and approve your pending drafts.</div>", unsafe_allow_html=True)
@@ -350,7 +347,6 @@ else:
                     st.write("")
                     st.write("")
 
-        # -------------------- CONTENT Hub --------------------
         elif selected_page == "📚 Content Hub":
             st.markdown("<h2 class='rgb-text' style='margin-bottom:5px; font-weight:800; letter-spacing:-1px;'>Content Hub</h2>", unsafe_allow_html=True)
             st.markdown("<div style='color: #A1A1AA; font-size: 14px; margin-bottom: 30px; font-weight:600;'>أرشيف جميع البوستات التي تم توليدها مسبقاً.</div>", unsafe_allow_html=True)
@@ -362,7 +358,6 @@ else:
             else:
                 st.write("قاعدة البيانات فارغة.")
                 
-        # -------------------- ANALYTICS --------------------
         elif selected_page == "📈 Analytics":
             st.markdown("<h2 class='rgb-text' style='margin-bottom:5px; font-weight:800; letter-spacing:-1px;'>Advanced Analytics</h2>", unsafe_allow_html=True)
             st.markdown("<div style='color: #00ffd5; font-size: 13px; margin-bottom: 30px; font-weight:600;'>Real-time AI Efficiency & Content Insights.</div>", unsafe_allow_html=True)
@@ -377,7 +372,7 @@ else:
                 
             st.markdown("""
             <div class='rgb-border' style='padding:30px; margin-top:15px;'>
-                <h4 style='color:white; margin-top:0;'>📊 AI Model Performance (Gemini 2.5 Flash)</h4>
+                <h4 style='color:white; margin-top:0;'>📊 AI Model Performance (Gemini Flash)</h4>
                 <div style='width:100%; background:#1F1F24; border-radius:12px; height:24px; margin-top:20px; overflow:hidden;'>
                     <div style='width:94%; height:100%; background:linear-gradient(90deg, #ff00c8, #00ffd5); animation: rgb-animate 5s infinite;'></div>
                 </div>
@@ -385,19 +380,16 @@ else:
             </div>
             """, unsafe_allow_html=True)
             
-        # -------------------- CALENDAR --------------------
         elif selected_page == "📅 Calendar":
             st.markdown("<h2 class='rgb-text' style='margin-bottom:5px; font-weight:800; letter-spacing:-1px;'>Content Calendar</h2>", unsafe_allow_html=True)
             st.markdown("<div style='color: #00ffd5; font-size: 13px; margin-bottom: 30px; font-weight:600;'>جدولة المحتوى الذكية وتخطيط النشر.</div>", unsafe_allow_html=True)
             st.info("📅 واجهة جدولة البوستات بالتواريخ قيد التطوير في الإصدار القادم.")
             
-        # -------------------- AUTOMATIONS --------------------
         elif selected_page == "⚡ Automations":
             st.markdown("<h2 class='rgb-text' style='margin-bottom:5px; font-weight:800; letter-spacing:-1px;'>Automation Flows</h2>", unsafe_allow_html=True)
             st.markdown("<div style='color: #00ffd5; font-size: 13px; margin-bottom: 30px; font-weight:600;'>ربط العمليات الآلية (Webhook & API Triggers).</div>", unsafe_allow_html=True)
             st.info("⚡ واجهة الربط الآلي مع منصات خارجية مثل n8n قيد التطوير.")
 
-        # -------------------- SETTINGS --------------------
         elif selected_page == "⚙️ Settings":
             st.markdown("<h2 class='rgb-text' style='margin-bottom:5px; font-weight:800; letter-spacing:-1px;'>System Settings</h2>", unsafe_allow_html=True)
             st.markdown("<div style='color: #A1A1AA; font-size: 14px; margin-bottom: 30px; font-weight:600;'>Manage API integrations and workspace preferences.</div>", unsafe_allow_html=True)
@@ -416,7 +408,7 @@ else:
                 <div style='display:flex; justify-content:space-between; align-items:center;'>
                     <div>
                         <div style='font-weight:800; color:white; font-size:16px;'>Google Gemini Engine</div>
-                        <div style='color:#71717A; font-size:13px;'>gemini-2.5-flash</div>
+                        <div style='color:#71717A; font-size:13px;'>gemini-1.5-flash</div>
                     </div>
                     <div style='background:rgba(0, 255, 213, 0.1); color:#00ffd5; padding:8px 16px; border-radius:8px; font-weight:800; font-size:12px; letter-spacing:1px;'>CONNECTED</div>
                 </div>
