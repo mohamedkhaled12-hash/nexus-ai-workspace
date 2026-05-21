@@ -3,11 +3,12 @@ import uuid
 from datetime import datetime
 import google.generativeai as genai
 import requests
+import streamlit as st
 
-# ================= المفاتيح =================
-GEMINI_API_KEY = "AIzaSyB75FnXfQZpboY1bHfEVUkUpmj55SDj3I8"
-LINKEDIN_ACCESS_TOKEN = "AQULY0mwQ2v1zhWRFvwspSPFLQyljE7LsuLdoSNFoUAI0EniBZw7K5qx2Rd43v-jbd8CtO2lGVxB8JT8cnLglnJv4pKilNHxIWk404TSLihHyCDKKEzdDCjCYthlR_8IHlQBDU2-VmNSxXQKXbPrSJ2XRFaZ_iy6kZqLlR8LEB6edWj7jerf1034wmXbT5R__XdfR4EjQNfvXHZ07xxF8833b55jG2i9wuDOricQzUtmhpITOjq-_hk5Z8KMhzdhwxiiC9q7_Vwyi05ViZxyLnu9833A0bGnbG3rFtKZI1jYefI6J0LfyMglk5KdpfUAlupUB2J0H4NtyaeofeD1UyaUxA4RSA"
-LINKEDIN_AUTHOR_URN = "urn:li:person:GeRhTnLpiR" # تم إضافته بنجاح
+# استدعاء المفاتيح بأمان من سيرفر ستريمليت
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+LINKEDIN_ACCESS_TOKEN = st.secrets["LINKEDIN_ACCESS_TOKEN"]
+LINKEDIN_AUTHOR_URN = st.secrets["LINKEDIN_AUTHOR_URN"] # تم إضافته بنجاح
 # ============================================
 
 genai.configure(api_key=GEMINI_API_KEY)
